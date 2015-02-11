@@ -8,8 +8,8 @@ The episodes attribute of TvShows is a list of Episode objects.
 This file contains the manual creation of a list of movie and Tv shows objects.
 These objects are passed as arguments to the open_page method call from the fresh_tomatoes.py file.
 
-* __fresh_tomatoes.py__
+* __fresh_tomatoes.py__  
 Contains the CSS styles, JavaScript, html and python necessary code to generate the .html final file.
 
-* fresh_tomatoes.html
+* __fresh_tomatoes.html__  
 Output html file from fresh_tomatoes.py
