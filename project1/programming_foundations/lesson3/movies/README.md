@@ -1,5 +1,16 @@
 ## Project 1: Movie Trailer Website
 
+### How to run the code
+In a terminal window run the following command:  
+```
+python entertainment_center.py 
+```
+  
+This will generate the fresh_tomatoes.html file  
+
+
+### Files
+
 * __media.py__  
 Contains the classes related to the creation of media objects: Video, Movie, Episode and TvShow. Movie and TvShow classes inherit from Video.
 The episodes attribute of TvShows is a list of Episode objects. 
