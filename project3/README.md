@@ -11,4 +11,4 @@ The Item Catalog project consists of developing an application that provides a l
 ### File structure
 
 
-### Testing strategie
+### Testing strategy
