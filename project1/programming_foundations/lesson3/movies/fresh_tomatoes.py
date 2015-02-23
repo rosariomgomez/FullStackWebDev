@@ -102,6 +102,7 @@ main_page_content = '''
 	</div>
 	
 	<!-- Main Page Content -->
+	<!-- Top navigation bar -->
 	<div class="container">
 	  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container">
@@ -117,6 +118,7 @@ main_page_content = '''
 		</div>
 	  </div>
 	</div>
+	<!-- Movies and TvShows section --> 
 	<div class="container">
 	  <div id='movies'>
 		<h2>Movies</h2>
@@ -132,7 +134,7 @@ main_page_content = '''
 </html>
 '''
 
-# A single movie entry html template
+# A single movie entry html template, open trailer in trailer video modal
 movie_tile_content = '''
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
 	<img src="{poster_image_url}" width="220" height="342">
@@ -142,7 +144,7 @@ movie_tile_content = '''
 </div>
 '''
 
-# A single tvshow entry html template
+# A single tvshow entry html template, div closed after including episode information
 tvshow_tile_content = '''
 <div class="col-md-6 col-lg-4 tvshow-tile text-center">
 	<img src="{poster_image_url}" width="200" height="300">
@@ -182,13 +184,16 @@ episode_tile_content = '''
 
 
 def extract_youtube_info(url):
-  # Extract the youtube ID from the url
+  '''Extract the youtube ID from the url'''
   youtube_id_match = re.search(r'(?<=v=)[^&#]+', url)
   youtube_id_match = youtube_id_match or re.search(r'(?<=be/)[^&#]+', url)
   return youtube_id_match.group(0) if youtube_id_match else None
 
 def create_movie_tiles_content(movies):
-	# The HTML content for this section of the page
+	'''Generate the HTML content for the movie section of the html page
+	   Input: list of movies
+	   Output: HTML code
+	'''
 	content = ''
 	for movie in movies:
 		trailer_youtube_id = extract_youtube_info(movie.trailer_youtube_url)
@@ -204,8 +209,11 @@ def create_movie_tiles_content(movies):
 	return content
 
 def create_episode_tiles_content(episodes):
-	# The HTML content for the episodes that resides inside the tvshow_tiles
-	# section of the page
+	'''Generate the HTML content for the episodes section that resides inside 
+	   the tvshow_tiles of the html page
+	   Input: list of episodes
+	   Output: HTML code
+	'''
 	content = '<h4 align="left">Episodes:</h4>'
 	
 	if episodes:
@@ -225,7 +233,10 @@ def create_episode_tiles_content(episodes):
 	return content
 
 def create_tvshow_tiles_content(tvshows):
-	# The HTML content for this section of the page
+	'''Generate the HTML content for the tvshows section of the html page
+	   Input: list of tvshows
+	   Output: HTML code
+	'''
 	content = ''
 	for tvshow in tvshows:
 
@@ -237,6 +248,7 @@ def create_tvshow_tiles_content(tvshows):
 			tvshow_station=tvshow.tv_station,
 			tvshow_episodes=tvshow.episodes)
 
+		# Append to each tvshow its episodes html and close the tvshow div section
 		content += create_episode_tiles_content(tvshow.episodes) + '</div>'
 	return content
 
