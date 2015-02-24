@@ -1,3 +1,9 @@
+'''
+This file contains the manual creation of a list of movie and Tv shows and
+episodes objects. These objects are passed as arguments to the open_page() 
+method call from the fresh_tomatoes.py file
+'''
+
 import fresh_tomatoes
 from media import Movie, Episode, TvShow
 
@@ -32,6 +38,7 @@ hunger_games = Movie('Hunger Games',
 					 'http://upload.wikimedia.org/wikipedia/en/4/42/HungerGamesPoster.jpg', 
 					 'https://www.youtube.com/watch?v=PbA63a7H0bo')
 
+#List of movies
 movies = [toy_story, avatar, school_of_rock, ratatouille, 
 		midnight_in_paris, hunger_games]
 
@@ -57,7 +64,7 @@ breaking_bad_e2_s1 = Episode('Cats in the Bag',
 							to use a plastic bin and instead destroys his bathtub in the process.",
 							48, 1, 2)
 
-#TVShow creation (Title, Storyline, poster, trailer, station, episodes)
+#TVShow creation (Title, Storyline, poster, trailer, station, episodes list)
 breaking_bad = TvShow('Breaking bad', 'The secret lifestyle of a chemistry teacher',
 					  'http://upload.wikimedia.org/wikipedia/commons/4/48/Breaking_Bad_logo.png',
 					  'AMC',
@@ -68,6 +75,7 @@ modern_family = TvShow('Modern Family', 'A comedy that follows the lives of a pe
 						'http://upload.wikimedia.org/wikipedia/en/5/53/Modern_Family_Promo_Season_1.jpg',
 						'ABC', [])
 
+#List of tv shows
 tvshows = [breaking_bad, modern_family]
 
 fresh_tomatoes.open_page(movies, tvshows)
