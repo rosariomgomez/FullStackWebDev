@@ -164,7 +164,7 @@ episode_tile_content = '''
 	</p>
 </div>
 
-<!-- Episode Modal -->
+<!-- Episode Modal. Code based on the static example here: http://getbootstrap.com/javascript/ -->
 <div class="modal fade" id="{episode_id}">
   <div class="modal-dialog">
 	<div class="modal-content"> 
