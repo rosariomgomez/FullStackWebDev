@@ -1,233 +1,231 @@
 
 <head>
-    <meta charset="utf-8">
-    <title>Fresh Tomatoes!</title>
+	<meta charset="utf-8">
+	<title>Fresh Tomatoes!</title>
 
-    <!-- Bootstrap 3 -->
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <style type="text/css" media="screen">
-        body {
-            padding-top: 80px;
-        }
-        #trailer .modal-dialog {
-            margin-top: 200px;
-            width: 640px;
-            height: 480px;
-        }
-        .hanging-close {
-            position: absolute;
-            top: -12px;
-            right: -12px;
-            z-index: 9001;
-        }
-        #trailer-video {
-            width: 100%;
-            height: 100%;
-        }
-        .movie-tile {
-            margin-bottom: 20px;
-            padding-top: 20px;
-        }
-        .movie-tile:hover {
-            background-color: #EEE;
-            cursor: pointer;
-        }
-        .scale-media {
-            padding-bottom: 56.25%;
-            position: relative;
-        }
-        .scale-media iframe {
-            border: none;
-            height: 100%;
-            position: absolute;
-            width: 100%;
-            left: 0;
-            top: 0;
-            background-color: white;
-        }
-        .episode-frame {
-            margin-bottom: 20px;
-            padding-top: 20px;
-        }
-    </style>
-    <script type="text/javascript" charset="utf-8">
-        // Pause the video when the modal is closed
-        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
-            // Remove the src so the player itself gets removed, as this is the only
-            // reliable way to ensure the video stops playing in IE
-            $("#trailer-video-container").empty();
-        });
-        // Start playing the video whenever the trailer modal is opened
-        $(document).on('click', '.movie-tile', function (event) {
-            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
-            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
-            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
-              'id': 'trailer-video',
-              'type': 'text-html',
-              'src': sourceUrl,
-              'frameborder': 0
-            }));
-        });
-        // Animate in the movies when the page loads
-        $(document).ready(function () {
-          $('.movie-tile').hide().first().show("fast", function showNext() {
-            $(this).next("div").show("fast", showNext);
-          });
-        });
-    </script>
+	<!-- Bootstrap 3 -->
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+	<style type="text/css" media="screen">
+		body {
+			padding-top: 80px;
+		}
+		#trailer .modal-dialog {
+			margin-top: 200px;
+			width: 640px;
+			height: 480px;
+		}
+		.hanging-close {
+			position: absolute;
+			top: -12px;
+			right: -12px;
+			z-index: 9001;
+		}
+		#trailer-video {
+			width: 100%;
+			height: 100%;
+		}
+		.movie-tile {
+			margin-bottom: 20px;
+			padding-top: 20px;
+		}
+		.movie-tile:hover {
+			background-color: #EEE;
+			cursor: pointer;
+		}
+		.scale-media {
+			padding-bottom: 56.25%;
+			position: relative;
+		}
+		.scale-media iframe {
+			border: none;
+			height: 100%;
+			position: absolute;
+			width: 100%;
+			left: 0;
+			top: 0;
+			background-color: white;
+		}
+	</style>
+	<script type="text/javascript" charset="utf-8">
+		// Pause the video when the modal is closed
+		$(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+			// Remove the src so the player itself gets removed, as this is the only
+			// reliable way to ensure the video stops playing in IE
+			$("#trailer-video-container").empty();
+		});
+		// Start playing the video whenever the trailer modal is opened
+		$(document).on('click', '.movie-tile', function (event) {
+			var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+			var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+			$("#trailer-video-container").empty().append($("<iframe></iframe>", {
+			  'id': 'trailer-video',
+			  'type': 'text-html',
+			  'src': sourceUrl,
+			  'frameborder': 0
+			}));
+		});
+		// Animate in the movies when the page loads
+		$(document).ready(function () {
+		  $('.movie-tile').hide().first().show("fast", function showNext() {
+			$(this).next("div").show("fast", showNext);
+		  });
+		});
+	</script>
 </head>
 
 <!DOCTYPE html>
 <html lang="en">
   <body>
-    <!-- Trailer Video Modal -->
-    <div class="modal" id="trailer">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
-            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
-          </a>
-          <div class="scale-media" id="trailer-video-container">
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Main Page Content -->
-    <div class="container">
-      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">Fresh Tomatoes Trailers</a>
-          </div>
-          <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-               <li><a href="#movies">Movies</a></li>
-               <li><a href="#tvshows">TV Shows</a><li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div id='movies'>
-        <h2>Movies</h2>
-        
+	<!-- Trailer Video Modal -->
+	<div class="modal" id="trailer">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+			<img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+		  </a>
+		  <div class="scale-media" id="trailer-video-container">
+		  </div>
+		</div>
+	  </div>
+	</div>
+	
+	<!-- Main Page Content -->
+	<!-- Top navigation bar -->
+	<div class="container">
+	  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+		  <div class="navbar-header">
+			<a class="navbar-brand" href="#">Fresh Tomatoes Trailers</a>
+		  </div>
+		  <div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+			   <li><a href="#movies">Movies</a></li>
+			   <li><a href="#tvshows">TV Shows</a><li>
+			</ul>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!-- Movies and TvShows section --> 
+	<div class="container">
+	  <div id='movies'>
+		<h2>Movies</h2>
+		
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="KYz2wyBy3kc" data-toggle="modal" data-target="#trailer">
-    <img src="http://upload.wikimedia.org/wikipedia/en/1/13/Toy_Story.jpg" width="220" height="342">
-    <h2>Toy Story</h2>
-    <p>A wonderful story of toys<br>
-    <i>Duration: 1:21:00 h.</i></p>
+	<img src="http://upload.wikimedia.org/wikipedia/en/1/13/Toy_Story.jpg" width="220" height="342">
+	<h2>Toy Story</h2>
+	<p>A wonderful story of toys<br>
+	<i>Duration: 1:21:00 h.</i></p>
 </div>
 
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="5PSNL1qE6VY" data-toggle="modal" data-target="#trailer">
-    <img src="http://upload.wikimedia.org/wikipedia/en/b/b0/Avatar-Teaser-Poster.jpg" width="220" height="342">
-    <h2>Avatar</h2>
-    <p>A marine on an alien planet<br>
-    <i>Duration: 2:58:00 h.</i></p>
+	<img src="http://upload.wikimedia.org/wikipedia/en/b/b0/Avatar-Teaser-Poster.jpg" width="220" height="342">
+	<h2>Avatar</h2>
+	<p>A marine on an alien planet<br>
+	<i>Duration: 2:58:00 h.</i></p>
 </div>
 
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="3PsUJFEBC74" data-toggle="modal" data-target="#trailer">
-    <img src="http://upload.wikimedia.org/wikipedia/en/1/11/School_of_Rock_Poster.jpg" width="220" height="342">
-    <h2>School of Rock</h2>
-    <p>Using rock music to learn<br>
-    <i>Duration: 1:49:00 h.</i></p>
+	<img src="http://upload.wikimedia.org/wikipedia/en/1/11/School_of_Rock_Poster.jpg" width="220" height="342">
+	<h2>School of Rock</h2>
+	<p>Using rock music to learn<br>
+	<i>Duration: 1:49:00 h.</i></p>
 </div>
 
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="c3sBBRxDAqk" data-toggle="modal" data-target="#trailer">
-    <img src="http://upload.wikimedia.org/wikipedia/en/5/50/RatatouillePoster.jpg" width="220" height="342">
-    <h2>Ratatouille</h2>
-    <p>A rat that is a chef in Paris<br>
-    <i>Duration: 1:55:00 h.</i></p>
+	<img src="http://upload.wikimedia.org/wikipedia/en/5/50/RatatouillePoster.jpg" width="220" height="342">
+	<h2>Ratatouille</h2>
+	<p>A rat that is a chef in Paris<br>
+	<i>Duration: 1:55:00 h.</i></p>
 </div>
 
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="BYRWfS2s2v4" data-toggle="modal" data-target="#trailer">
-    <img src="http://upload.wikimedia.org/wikipedia/en/9/9f/Midnight_in_Paris_Poster.jpg" width="220" height="342">
-    <h2>Midnight in Paris</h2>
-    <p>Going back in time to meet authors<br>
-    <i>Duration: 1:40:00 h.</i></p>
+	<img src="http://upload.wikimedia.org/wikipedia/en/9/9f/Midnight_in_Paris_Poster.jpg" width="220" height="342">
+	<h2>Midnight in Paris</h2>
+	<p>Going back in time to meet authors<br>
+	<i>Duration: 1:40:00 h.</i></p>
 </div>
 
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="PbA63a7H0bo" data-toggle="modal" data-target="#trailer">
-    <img src="http://upload.wikimedia.org/wikipedia/en/4/42/HungerGamesPoster.jpg" width="220" height="342">
-    <h2>Hunger Games</h2>
-    <p>A real reality show<br>
-    <i>Duration: 2:03:00 h.</i></p>
+	<img src="http://upload.wikimedia.org/wikipedia/en/4/42/HungerGamesPoster.jpg" width="220" height="342">
+	<h2>Hunger Games</h2>
+	<p>A real reality show<br>
+	<i>Duration: 2:03:00 h.</i></p>
 </div>
 
-      </div>
-      <hr>
-      <div id='tvshows'>
-        <h2>TV Shows</h2>
-        
+	  </div>
+	  <hr>
+	  <div id='tvshows'>
+		<h2>TV Shows</h2>
+		
 <div class="col-md-6 col-lg-4 tvshow-tile text-center">
-    <img src="http://upload.wikimedia.org/wikipedia/commons/4/48/Breaking_Bad_logo.png" width="200" height="300">
-    <h2>Breaking bad</h2>
-    <p>The secret lifestyle of a chemistry teacher<br>
-    <i>Station: AMC</i>
-    </p>
+	<img src="http://upload.wikimedia.org/wikipedia/commons/4/48/Breaking_Bad_logo.png" width="200" height="300">
+	<h2>Breaking bad</h2>
+	<p>The secret lifestyle of a chemistry teacher<br>
+	<i>Station: AMC</i>
+	</p>
 <h4 align="left">Episodes:</h4>
 <div class="text-left">
-    <a href='#' class="episode-tile" data-toggle="modal" data-target="#Pilot">
-    Pilot</a>
-    <p>Season: 1, Episode: 1<br>
-    <i>Duration: 58</i>
-    </p>
+	<a href='#' class="episode-tile" data-toggle="modal" data-target="#Pilot">
+	Pilot</a>
+	<p>Season: 1, Episode: 1<br>
+	<i>Duration: 58</i>
+	</p>
 </div>
 
-<!-- Episode Modal -->
+<!-- Episode Modal. Code based on the static example here: http://getbootstrap.com/javascript/ -->
 <div class="modal fade" id="Pilot">
   <div class="modal-dialog">
-    <div class="modal-content"> 
-      <div class="modal-header">
-        <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
-          <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
-        </a>
-        <h4 class="modal-title">Pilot storyline</h4>
-      </div>
-      <div class="modal-body" id="episode-container">
-        <p class="text-left">Walter White, a 50-year old chemistry teacher, secretly begins 								  making crystallized methamphetamine to support his family after 								  learning that he has terminal lung cancer. He teams up with a former 								  student, Jesse Pinkman, who is a meth dealer. Jesse tries to sell the 								  meth they made, but the dealers snatch him and make him show them their 								  lab, which is in an old RV. Walt knows the dealers intend to kill him, 								  so he poisons them while pretending to share his recipe.</p>
-      </div>
-    </div>
+	<div class="modal-content"> 
+	  <div class="modal-header">
+		<a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+		  <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+		</a>
+		<h4 class="modal-title">Pilot storyline</h4>
+	  </div>
+	  <div class="modal-body" id="episode-container">
+		<p class="text-left">Walter White, a 50-year old chemistry teacher, secretly begins 							making crystallized methamphetamine to support his family after 							learning that he has terminal lung cancer. He teams up with a former 							student, Jesse Pinkman, who is a meth dealer. Jesse tries to sell the 							meth they made, but the dealers snatch him and make him show them their 							lab, which is in an old RV. Walt knows the dealers intend to kill him, 							so he poisons them while pretending to share his recipe.</p>
+	  </div>
+	</div>
   </div>
 </div>
 
 <div class="text-left">
-    <a href='#' class="episode-tile" data-toggle="modal" data-target="#CatsintheBag">
-    Cats in the Bag</a>
-    <p>Season: 1, Episode: 2<br>
-    <i>Duration: 48</i>
-    </p>
+	<a href='#' class="episode-tile" data-toggle="modal" data-target="#CatsintheBag">
+	Cats in the Bag</a>
+	<p>Season: 1, Episode: 2<br>
+	<i>Duration: 48</i>
+	</p>
 </div>
 
-<!-- Episode Modal -->
+<!-- Episode Modal. Code based on the static example here: http://getbootstrap.com/javascript/ -->
 <div class="modal fade" id="CatsintheBag">
   <div class="modal-dialog">
-    <div class="modal-content"> 
-      <div class="modal-header">
-        <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
-          <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
-        </a>
-        <h4 class="modal-title">Cats in the Bag storyline</h4>
-      </div>
-      <div class="modal-body" id="episode-container">
-        <p class="text-left">Walt and Jesse try to dispose of the two bodies in the RV, which 								  becomes increasingly complicated when one of them, Krazy-8, wakes up. 								  They eventually imprison him in Jesse's basement. Meanwhile, Skyler 								  grows suspicious of Walter's recent behavior and discovers that their 								  baby is a girl. Jesse disposes of the body of the other dealer, Emilio Koyama, 								  using hydrofluoric acid as per Walt's instructions, but ignores Walt's warning 								  to use a plastic bin and instead destroys his bathtub in the process.</p>
-      </div>
-    </div>
+	<div class="modal-content"> 
+	  <div class="modal-header">
+		<a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+		  <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+		</a>
+		<h4 class="modal-title">Cats in the Bag storyline</h4>
+	  </div>
+	  <div class="modal-body" id="episode-container">
+		<p class="text-left">Walt and Jesse try to dispose of the two bodies in the RV, which 							becomes increasingly complicated when one of them, Krazy-8, wakes up. 							They eventually imprison him in Jesse's basement. Meanwhile, Skyler 							grows suspicious of Walter's recent behavior and discovers that their 							baby is a girl. Jesse disposes of the body of the other dealer, Emilio Koyama, 							using hydrofluoric acid as per Walt's instructions, but ignores Walt's warning 							to use a plastic bin and instead destroys his bathtub in the process.</p>
+	  </div>
+	</div>
   </div>
 </div>
 </div>
 <div class="col-md-6 col-lg-4 tvshow-tile text-center">
-    <img src="http://upload.wikimedia.org/wikipedia/en/5/53/Modern_Family_Promo_Season_1.jpg" width="200" height="300">
-    <h2>Modern Family</h2>
-    <p>A comedy that follows the lives of a peculiar family<br>
-    <i>Station: ABC</i>
-    </p>
+	<img src="http://upload.wikimedia.org/wikipedia/en/5/53/Modern_Family_Promo_Season_1.jpg" width="200" height="300">
+	<h2>Modern Family</h2>
+	<p>A comedy that follows the lives of a peculiar family<br>
+	<i>Station: ABC</i>
+	</p>
 <h4 align="left">Episodes:</h4>No episodes added yet</div>
-      </div>
-    </div>
+	  </div>
+	</div>
   </body>
 </html>
