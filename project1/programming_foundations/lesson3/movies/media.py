@@ -1,7 +1,7 @@
 import webbrowser
 
-class Video():
-	VALID_RATINGS = ["G", "PG", "PG-13", "R"]
+class Video(object):
+	"""This class provides a way to store video related information"""
 
 	def __init__(self, title, storyline, poster_image_url):
 		self.title = title
@@ -19,6 +19,7 @@ class Movie(Video):
 		self.duration = movie_duration
 
 	def show_trailer(self):
+		'''Open a pop-up window with the movie trailer'''
 		webbrowser.open(self.trailer_youtube_url)
 
 class Episode():
