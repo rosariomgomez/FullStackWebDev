@@ -1,6 +1,6 @@
 '''
 This file contains the manual creation of a list of movie and Tv shows and
-episodes objects. These objects are passed as arguments to the open_page() 
+episodes objects. These objects are passed as arguments to the open_page()
 method call from the fresh_tomatoes.py file
 '''
 
@@ -8,39 +8,39 @@ import fresh_tomatoes
 from media import Movie, Episode, TvShow
 
 #Movie creation
-toy_story = Movie(	'Toy Story', 
+toy_story = Movie('Toy Story',
 					'A wonderful story of toys', 81,
 					'http://upload.wikimedia.org/wikipedia/en/1/13/Toy_Story.jpg',
 					'https://www.youtube.com/watch?v=KYz2wyBy3kc')
 
-avatar = Movie( 'Avatar', 
+avatar = Movie('Avatar',
 				'A marine on an alien planet', 178,
 				'http://upload.wikimedia.org/wikipedia/en/b/b0/Avatar-Teaser-Poster.jpg',
 				'https://www.youtube.com/watch?v=5PSNL1qE6VY')
 
-school_of_rock = Movie( 'School of Rock', 
-						'Using rock music to learn', 109, 
-						'http://upload.wikimedia.org/wikipedia/en/1/11/School_of_Rock_Poster.jpg', 
-						'https://www.youtube.com/watch?v=3PsUJFEBC74')
+school_of_rock = Movie('School of Rock',
+					'Using rock music to learn', 109,
+					'http://upload.wikimedia.org/wikipedia/en/1/11/School_of_Rock_Poster.jpg',
+					'https://www.youtube.com/watch?v=3PsUJFEBC74')
 
-ratatouille = Movie('Ratatouille', 
-					'A rat that is a chef in Paris', 115,  
+ratatouille = Movie('Ratatouille',
+					'A rat that is a chef in Paris', 115,
 					'http://upload.wikimedia.org/wikipedia/en/5/50/RatatouillePoster.jpg',
 					'https://www.youtube.com/watch?=v=c3sBBRxDAqk')
 
-midnight_in_paris = Movie(  'Midnight in Paris',
-							'Going back in time to meet authors', 100,
-							'http://upload.wikimedia.org/wikipedia/en/9/9f/Midnight_in_Paris_Poster.jpg',
-							'https://www.youtube.com/watch?v=BYRWfS2s2v4')
+midnight_in_paris = Movie('Midnight in Paris',
+					'Going back in time to meet authors', 100,
+					'http://upload.wikimedia.org/wikipedia/en/9/9f/Midnight_in_Paris_Poster.jpg',
+					'https://www.youtube.com/watch?v=BYRWfS2s2v4')
 
-hunger_games = Movie('Hunger Games', 
+hunger_games = Movie('Hunger Games',
 					 'A real reality show', 123,
-					 'http://upload.wikimedia.org/wikipedia/en/4/42/HungerGamesPoster.jpg', 
+					 'http://upload.wikimedia.org/wikipedia/en/4/42/HungerGamesPoster.jpg',
 					 'https://www.youtube.com/watch?v=PbA63a7H0bo')
 
 #List of movies
-movies = [toy_story, avatar, school_of_rock, ratatouille, 
-		midnight_in_paris, hunger_games]
+movies = [toy_story, avatar, school_of_rock, ratatouille,
+					midnight_in_paris, hunger_games]
 
 
 #Episodes creation (Title, Storyline, duration, season, episode)
